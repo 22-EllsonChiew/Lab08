@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObstacleMovement : MonoBehaviour
+public class ScoringSystem : MonoBehaviour
 {
-    private float xSpeed = -4f;
 
     public Text scoreText;
     public int theScore;
@@ -18,16 +17,12 @@ public class ObstacleMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(new Vector3(xSpeed*Time.deltaTime, 0, 0f));
-        if (transform.position.y < -5)
-        {
-            Destroy(this.gameObject);
-        }
+        
     }
 
-   /* void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Pointer")
+        if (collision.gameObject.tag == "Obstacle")
         {
             Debug.Log("PLus");
             theScore += 10;
@@ -35,5 +30,5 @@ public class ObstacleMovement : MonoBehaviour
             Destroy(collision.gameObject);
 
         }
-    }*/
+    }
 }
