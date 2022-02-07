@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float speed;
+
+    public float maxY;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,10 @@ public class Player : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         transform.position = transform.position + new Vector3(0 , verticalInput * speed * Time.deltaTime, 0);
+
+        Vector3 pos = transform.position;
+        pos.y = Mathf.Clamp (pos.y, -maxY, maxY);
+        transform.position = pos;
 
       
 
