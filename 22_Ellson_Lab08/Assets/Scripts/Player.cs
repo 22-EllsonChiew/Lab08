@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public float speed;
 
     public float maxY;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +30,16 @@ public class Player : MonoBehaviour
         pos.y = Mathf.Clamp (pos.y, -maxY, maxY);
         transform.position = pos;
 
-      
-
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Obstacle")
+        {
+
+            Debug.Log("Touch");
+            SceneManager.LoadScene("GameOver");
+        }
+    }
+
 }
